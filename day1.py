@@ -3,7 +3,7 @@ pw = 0
 
 # Part 1
 # Count how many times the dial ends at 0
-with open("Input/test.txt") as f:
+with open("Input/1.txt") as f:
     for line in f:
         if line[0] == "L":
             dial -= int(line[1:])
@@ -23,6 +23,7 @@ pw = 0
 with open("Input/1.txt") as f:
     for line in f:
         if line[0] == "L":
+            ''' Horrible brute force '''
             for i in range(int(line[1:])):
                 dial -= 1
                 if dial == 0:
