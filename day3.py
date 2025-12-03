@@ -47,4 +47,4 @@ with open("Input/3.txt") as f:
         # sum up the bank joltages
         total_jolts_2 += int(joltage_bank)
 
-print(total_jolts_2)
+print(f"Total jolt max from twelve batteries: {total_jolts_2}")
