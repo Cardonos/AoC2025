@@ -13,7 +13,7 @@ with open("Input/4.txt") as f:
         else:
             grid = np.vstack((grid, new_line))
 
-# Function that checks an ajacent field to see whether it contains a paper roll
+# Function that checks an adjacent field to see whether it contains a paper roll
 def check_adj(grid_,x,y):
     if grid_[x][y] == "@" and x >= 0 and y >= 0:
         return 1
