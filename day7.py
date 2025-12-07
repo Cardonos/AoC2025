@@ -17,9 +17,9 @@ with open("Input/7.txt") as f:
             # this generates the proper beam state for the next row
             #
             # Part 2:
-            # The beam index at a location represents how many paths can make the beam end up in that location.
-            # When beams "merge" (aka the same index gets changed by multiple splitters) the indices add up.
-            # Summing up the values of the dictionary represents the total unique paths through the grid
+            # The beam index in the path dict at a location represents how many paths can make the beam end up
+            # in that location. When beams "merge" (aka the same index gets changed by multiple splitters) the indices
+            # add up.Summing up the values of the dictionary represents the total unique paths through the grid
             if new_line[i] == "^" and i in beam_index:
                 # Part 1
                 beam_index.remove(i)
