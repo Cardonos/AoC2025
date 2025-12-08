@@ -1,3 +1,5 @@
+# This entire solution is a horrible brute force but it works
+# Cant be bothered to learn networks, so it precomputes the distance between each pair of nodes and goes from there
 import numpy as np
 
 junction_boxes = np.array([])
@@ -25,7 +27,11 @@ distances_list = distances_list[ind][1:]
 print(distances_list)
 
 circ_count = 0
-for connection in range(1000):
+part2 = True
+connection = 0
+while True:
+
+#for connection in range(190):
     node1 = distances_list[connection][1]
     node2 = distances_list[connection][2]
     if junction_boxes[node1][3] is None and junction_boxes[node2][3] is None:
@@ -37,15 +43,19 @@ for connection in range(1000):
         junction_boxes[node2][3] = junction_boxes[node1][3]
     else:
         np.putmask(junction_boxes[:,3],junction_boxes[:,3] == junction_boxes[node2][3],junction_boxes[node1][3])
-print(junction_boxes)
-np.putmask(junction_boxes[:, 3], junction_boxes[:, 3] == None, 10000)
-circ, count = np.unique(junction_boxes[:,3], return_counts=True)
-circuits = dict(zip(circ,count))
-circuits.pop(10000)
-circ_lengths = list(circuits.values())
-circsum = 1
-for m in range(3):
-    maxx = max(circ_lengths)
-    circsum *= maxx
-    circ_lengths.pop(circ_lengths.index(maxx))
-print(circsum)
+    if junction_boxes[:, 3].all() and part2:
+        print(junction_boxes[node1][0] * junction_boxes[node2][0])
+        break
+    connection += 1
+if not part2:
+    np.putmask(junction_boxes[:, 3], junction_boxes[:, 3] == None, 10000)
+    circ, count = np.unique(junction_boxes[:,3], return_counts=True)
+    circuits = dict(zip(circ,count))
+    circuits.pop(10000)
+    circ_lengths = list(circuits.values())
+    circsum = 1
+    for m in range(3):
+        maxx = max(circ_lengths)
+        circsum *= maxx
+        circ_lengths.pop(circ_lengths.index(maxx))
+    print(circsum)
