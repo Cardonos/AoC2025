@@ -8,5 +8,4 @@ with open("Input/2.txt") as f:
                 invalid_add_p1 += test_id
             if bool(re.fullmatch(pattern+"+", str(test_id))):
                 invalid_add_p2 += test_id
-print(f"Solution part 1: {invalid_add_p1}")
-print(f"Solution part 2: {invalid_add_p2}")
+print(f"Solution part 1: {invalid_add_p1}, Solution part 2: {invalid_add_p2}")
