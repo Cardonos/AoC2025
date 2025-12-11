@@ -11,7 +11,7 @@ with open("Input/11.txt") as f:
         for server in servers[2:]:
             serverdict[servers[0][:-1]].append(server)
 
-# recursively step through all connections until an "out" is reached
+# recursively step through all connections until an "out" is reached. Pray that there are no loops in the input.
 @cache
 def next_server(key, target):
     # This check is only needed for part 2
@@ -21,7 +21,7 @@ def next_server(key, target):
         return 1
     return sum(next_server(keys, target) for keys in serverdict[key])
 
-# Iterate through all connections of "you"
+# Iterate through all connections of "you", if they reach "out" then add it up
 output = 0
 for keys in serverdict["you"]:
     output += next_server(keys, "out")
