@@ -17,8 +17,10 @@ def next_server(key, target):
     # This check is only needed for part 2
     if key == "out" and target != "out":
         return 0
+    # target is reached, pass 1 up the recursion chain
     elif key == target:
         return 1
+    # call the function recursively for all connections and sum up how often the target was reached
     return sum(next_server(keys, target) for keys in serverdict[key])
 
 # Iterate through all connections of "you", if they reach "out" then add it up
