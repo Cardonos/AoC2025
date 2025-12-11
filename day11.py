@@ -1,5 +1,4 @@
-from functools import cache, reduce
-from itertools import permutations
+from functools import cache
 
 # Part 1
 serverdict = {}
