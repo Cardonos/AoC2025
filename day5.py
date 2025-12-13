@@ -1,4 +1,3 @@
-
 # Parse Input into two lists
 with open("Input/5.txt") as f:
     input = f.read().split("\n")[:-1]
@@ -12,19 +11,10 @@ with open("Input/5.txt") as f:
         ranges.append(list(map(int,i.split("-"))))
 
 # Part 1
-count = 0
-# Iterate over every ingredient
-for ingredient in ingredients:
-    spoiled = True
-    k = 0
-    # iterate over all ranges and see if it has not yet been found to be within one of the ranges
-    while spoiled and k < len(ranges):
-        # check if ingredient is between the upper and lower bounds
-        if ranges[k][0] <= ingredient <= ranges[k][1]:
-            spoiled = False
-            count += 1
-        k += 1
-
+allranges = []
+for ran in ranges:
+    allranges.append(range(ran[0], ran[1]))
+count = sum([1 if True in list([ingredient in range_ for range_ in allranges]) else 0 for ingredient in ingredients])
 print(f"The number of fresh ingredients is {count}")
 
 # Part 2
